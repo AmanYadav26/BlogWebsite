@@ -1,0 +1,183 @@
+*{
+
+  margin: 0;
+  font-family: "Quicksand";
+  color: #333;
+}
+.nav{
+  background-color: rgb(47, 48, 50);
+}
+
+
+
+
+
+
+.navbar-nav li a:hover{
+  color: rgb(201, 90, 90);
+  background-color: rgb(72, 68, 68);
+}
+
+
+
+/* Blogs preview */
+
+
+.blog-preview {
+  
+  border-bottom: 1px solid #fafafa;
+  box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+}
+.blog-preview:hover {
+  
+  box-shadow: 1px 3px 5px rgba(81, 80, 80, 0.1);
+}
+.blog-preview h5 {
+  display: inline;
+}
+
+.blog-preview small{
+  color: black;
+}
+.center{
+  text-align: center;
+}
+ .blogs{
+ 
+  width: 15rem;
+  
+}
+
+.blog-preview p{
+ 
+
+  color: #6b4f58;
+}
+
+
+.img{
+  width: 14rem;
+}
+.blog-preview img{
+  width: 45%;
+  float: left;
+}
+
+
+
+
+
+
+
+
+.blog-list{
+  
+ 
+  
+  display: flex;
+  margin-top: 21px;
+  justify-content: center;
+}
+
+
+.home{
+  width: 100%;
+}
+.currentday{
+  opacity: 0.89;
+ 
+  background: url('./assests/photo-1562813733-b31f71025d54.avif') no-repeat center center/cover ;
+  width: 95vw;
+  height: 44vh;
+  
+
+
+}
+.blog{
+  color: white;
+}
+@media screen and (max-width:331px) {
+  .currentblog{
+    width: 60vw;
+  }
+}
+@media screen and (min-width:331px) {
+  .currentblog{
+    width: 43vw;
+  }
+}
+.currentblog{
+  margin-left: 4vw;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-top: 4rem;
+}
+@media screen and (max-width:457px) {
+  .currentblog h2{
+    font-size: 1.2rem;
+  }
+  .currentblog h5{
+    font-size: 1rem;
+  }
+  
+}
+.currentblog h2,a{
+  width: fit-content; 
+  margin-left: 1.2rem;
+}
+.currentblog h5{
+  margin-left: 1.2rem;
+}
+
+.currentblog a{
+  
+  margin-top: 2rem;
+  text-decoration: none;
+  color: white;
+ }
+.reading:hover{
+  cursor: pointer;
+  text-decoration:underline;
+}
+.blog-details{
+  display: flex;
+  width: 100vw;
+  height: 82vh;
+  justify-content: center;
+  margin-top: 4vh;
+}
+
+.background{
+  margin: auto;
+  opacity: 0.89;
+  background-position: center center;
+  background: url('./assests/learning_react.png') no-repeat center center/cover;
+  width: 90vw;
+  height: 35vh;
+  background-size: cover;
+  
+}
+
+
+.background h2{
+ 
+  padding-top: 14vh;
+  
+}
+/* .aboutme{
+  width: 56vw;
+}
+.image img{
+  width: 34vw;
+} */
+
+
+
+
+
+
+
+
+
+
