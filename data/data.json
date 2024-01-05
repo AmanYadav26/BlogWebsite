@@ -1,0 +1,38 @@
+{
+  "blogs": [
+    {
+      "title": "Day 3-Import react router dom",
+      "date": "July 23,2023",
+      "body": "Nothing special ,(I learned some basic concept props , useffect and usestate )",
+      "id": 3,
+      "Currentday": false
+    },
+    {
+      "title": "Day 2-Too many tutorials",
+      "date": "July 22,2023",
+      "body": "Alright,I am bored AF of watching youtube lectures, they are quite good but i am not... ",
+      "id": 2,
+      "Currentday": false
+    },
+    {
+      "title": "My First day Learning React xD",
+      "date": "July 21,2023",
+      "body": "This was my first day learning React.I started learning by followind a React course of Youtube...",
+      "id": 1,
+      "Currentday": false
+    },
+    {
+      "title": "Day 5... It's all coming together",
+      "body": "I added functinality to the continue reading portion of Home page",
+      "Date": "July 24,2023",
+      "id": 5,
+      "Currentday": true
+    },
+    {
+      "title": "Day 6",
+      "date": "Feb 21,2003",
+      "body": "this is aman",
+      "id": 6
+    }
+  ]
+}
