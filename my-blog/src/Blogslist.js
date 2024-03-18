@@ -39,8 +39,9 @@ const Bloglist = ({ Blogs, title, Currentday }) => {
             <div className="container-lg mt-3 mb-5">
                 <div className="row justify-content-center align-items-center g-5 ">
                     {Blogs.map((blog) => (
-
+                        
                         !blog.Currentday && (
+                            
                             <div className="col-lg-6 col-xs-7 blog-preview" key={blog.id}>
                                 <div className="img">
                                     <img src={img2} alt="" />
@@ -53,8 +54,9 @@ const Bloglist = ({ Blogs, title, Currentday }) => {
                                 </div>
                                 <div className="para text-start" style={{ "marginLeft": "7rem" }}>
                                     <p>{blog.body}</p>
+                                    <p>{blog.id}</p>
                                     <div className="link text-start">
-                                    <Link to={`blogs/${blog.id}`} className="text-decoration-none text-start ms-2 ">
+                                    <Link to={`/posts/${blog._id}`} className="text-decoration-none text-start ms-2 ">
                                         Continue reading...
                                     </Link>
                                 </div>
