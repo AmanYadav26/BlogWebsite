@@ -11,13 +11,13 @@ const Blogdetails = () => {
   ).userId;
   const history = useHistory();
   const { id } = useParams();
-  const Details = Usefetch("http://localhost:3000/posts/" + id);
+  const Details = Usefetch("https://blogwebsite-backend-yg9k.onrender.com/posts/" + id);
 
   const handleDelete = () => {
     console.log("Details:", Details);
 
     var xhr = new XMLHttpRequest();
-    xhr.open("DELETE", "http://localhost:3000/posts/" + id, true);
+    xhr.open("DELETE", "https://blogwebsite-backend-yg9k.onrender.com/posts/" + id, true);
     xhr.setRequestHeader(
       "Authorization",
       "Bearer " + localStorage.getItem("jwtToken")
