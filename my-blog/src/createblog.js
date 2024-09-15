@@ -8,7 +8,7 @@ function createPost(history) {
     };
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:3000/posts', true);
+    xhr.open('POST', 'https://blogwebsite-backend-yg9k.onrender.com/posts', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('jwtToken'));
     xhr.onreadystatechange = function () {
