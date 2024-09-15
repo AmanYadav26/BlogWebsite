@@ -16,7 +16,7 @@ const EditPost = () => {
       return;
     }
 
-    fetch(`http://localhost:3000/posts/${postId}`, {
+    fetch(`https://blogwebsite-backend-yg9k.onrender.com/posts/${postId}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
@@ -47,7 +47,7 @@ const EditPost = () => {
       body: post.body,
     };
 
-    fetch(`http://localhost:3000/posts/${localStorage.getItem('editPostId')}`, {
+    fetch(`https://blogwebsite-backend-yg9k.onrender.com/posts/${localStorage.getItem('editPostId')}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
