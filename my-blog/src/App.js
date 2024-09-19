@@ -8,6 +8,7 @@ import Main from "./main.js";
 import Blogdetails from "./Blogdetails";
 import Register from "./register.js";
 import EditPost from "./EditPost.js";
+import Aboutus from "./about.js";
 import Login from "./Login.js";
 import Logout from "./Logout.js";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -26,6 +27,9 @@ function App() {
             </Route>
             <Route exact path="/login">
               <Login />
+            </Route>
+            <Route exact path="/about">
+              <Aboutus/>
             </Route>
             <Route exact path="/logout">
               <Logout />
@@ -53,17 +57,3 @@ function App() {
 }
 
 export default App;
-{
-  /* <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/aboutme">
-               <Aboutme/>
-            </Route>
-            <Route path="/create">
-              <Create />
-            </Route>
-            <Route path="/blogs/:id">
-              <Blogdetails />
-            </Route> */
-}

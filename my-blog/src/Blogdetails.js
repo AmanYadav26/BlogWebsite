@@ -12,17 +12,14 @@ const Blogdetails = () => {
   const history = useHistory();
   const { id } = useParams();
   const Details = Usefetch("http://localhost:3000/posts/" + id);
-
   const handleDelete = () => {
     console.log("Details:", Details);
-
     var xhr = new XMLHttpRequest();
     xhr.open("DELETE", "http://localhost:3000/posts/" + id, true);
     xhr.setRequestHeader(
       "Authorization",
       "Bearer " + localStorage.getItem("jwtToken")
     );
-
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
@@ -36,7 +33,6 @@ const Blogdetails = () => {
 
     xhr.send();
   };
-// done by aman sharma
   const edit = () => {
     localStorage.setItem("editPostId", id);
   };
@@ -61,12 +57,9 @@ const Blogdetails = () => {
                 className="btn btn-secondary text-start"
                 style={{ width: "fit-content" }}
                 onClick={handleDelete}
-              >
+                >
                 Delete
               </button>
-
-{/* Done by Aman Sharma */}
-
                 <Link to="/editpost">
                   <button
                     className="btn btn-secondary text-start"
@@ -76,7 +69,6 @@ const Blogdetails = () => {
                     Edit
                   </button>
                 </Link>
-
             </div>
             )}
           </div>

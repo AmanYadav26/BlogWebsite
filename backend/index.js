@@ -3,22 +3,22 @@ const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const cors = require("cors");
+const dotenv = require("dotenv")
+dotenv.config()
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-const mongoURI = "mongodb://localhost:27017/Blogwebsite";
+const mongoURI = process.env.MONGODB_URI;
 mongoose.connect(mongoURI);
 
-//User model
 const UserSchema = new mongoose.Schema({
   username: String,
   password: String,
 });
 const User = mongoose.model("User", UserSchema);
 
-//Post model
 const PostSchema = new mongoose.Schema({
   userId: mongoose.Schema.Types.ObjectId,
   title: String,
@@ -27,7 +27,6 @@ const PostSchema = new mongoose.Schema({
 });
 const Post = mongoose.model("Post", PostSchema);
 
-//verify token
 function verifyToken(req, res, next) {
   const token = req.headers["authorization"];
   if (!token)

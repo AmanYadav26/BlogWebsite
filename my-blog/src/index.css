@@ -140,6 +140,7 @@
   cursor: pointer;
   text-decoration:underline;
 }
+
 .blog-details{
   display: flex;
   width: 100vw;
@@ -156,7 +157,6 @@
   width: 90vw;
   height: 35vh;
   background-size: cover;
-  
 }
 
 

@@ -14,6 +14,7 @@ const Home = () => {
         style={{ background: "#bebebe",height:'3rem',alignItems:'center'}}
       >
         <Link to="/create" className="text-secondary-emphasis text-uppercase" style={{textDecoration:'none'}}>Create blog</Link>
+        <Link to="/about" className="text-secondary-emphasis text-uppercase" style={{textDecoration:'none'}}>About Us</Link>
         <Link to="/logout" className="text-secondary-emphasis text-uppercase" style={{textDecoration:'none'}}>
           logout
         </Link>
