@@ -9,7 +9,7 @@ function loginUser(history) {
     password: document.getElementById("login-password").value,
   };
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", "http://localhost:3000/login", true);
+  xhr.open("POST", "https://blogwebsite-backend-yg9k.onrender.com/login", true);
   xhr.setRequestHeader("Content-Type", "application/json");
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
