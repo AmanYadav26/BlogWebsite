@@ -60,7 +60,8 @@ function verifyToken(req, res, next) {
 // Register Route
 app.post("/register", async (req, res) => {
   try {
-    const hashedPassword = bcrypt.hashSync(req.body.password, 8);
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
     const user = new User({
       username: req.body.username,
       password: hashedPassword,
@@ -69,9 +70,11 @@ app.post("/register", async (req, res) => {
     await user.save();
     res.status(201).send("User register successful");
   } catch (error) {
+    console.error(error);
     res.status(500).send("Error registering user");
   }
 });
+
 
 
 // Login Route
@@ -79,21 +82,30 @@ app.post("/login", async (req, res) => {
   try {
     const user = await User.findOne({ username: req.body.username });
 
-    if (user && bcrypt.compareSync(req.body.password, user.password)) {
-      const token = jwt.sign(
-        { userId: user._id },
-        process.env.JWT_SECRET,
-        { expiresIn: "7d" }
-      );
-
-      res.json({ token });
-    } else {
-      res.status(401).send("Invalid credentials");
+    if (!user) {
+      return res.status(401).send("Invalid credentials");
     }
+
+    const isMatch = await bcrypt.compare(req.body.password, user.password);
+
+    if (!isMatch) {
+      return res.status(401).send("Invalid credentials");
+    }
+
+    const token = jwt.sign(
+      { userId: user._id },
+      process.env.JWT_SECRET,
+      { expiresIn: "7d" }
+    );
+
+    res.json({ token });
+
   } catch (error) {
+    console.error(error);
     res.status(500).send("Error during login");
   }
 });
+
 
 
 // Create Post
