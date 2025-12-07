@@ -58,22 +58,34 @@ function verifyToken(req, res, next) {
 
 
 // Register Route
+// Register Route
 app.post("/register", async (req, res) => {
   try {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    const { username, password } = req.body;
+
+    // Check if user already exists
+    const existingUser = await User.findOne({ username });
+
+    if (existingUser) {
+      return res.status(400).json({ message: "User already exists" });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = new User({
-      username: req.body.username,
+      username,
       password: hashedPassword,
     });
 
     await user.save();
-    res.status(201).send("User register successful");
+    res.status(201).json({ message: "User registered successfully" });
+
   } catch (error) {
     console.error(error);
     res.status(500).send("Error registering user");
   }
 });
+
 
 
 
