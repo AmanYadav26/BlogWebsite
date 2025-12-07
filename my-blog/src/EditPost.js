@@ -11,28 +11,29 @@ const EditPost = () => {
 
   useEffect(() => {
     const postId = localStorage.getItem('editPostId');
+    const token = localStorage.getItem('jwtToken');
+
     if (!postId) {
       alert('No post selected for editing');
       return;
     }
 
-    fetch(`https://blogwebsite-backend-yg9k.onrender.com/posts/${postId}`, {
+    fetch(`http://localhost:5000/posts/${postId}`, {
       method: 'GET',
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        Authorization: `Bearer ${token}`,
       },
     })
       .then(response => {
-        if (response.ok) {
-          return response.json();
-        } else {
+        if (!response.ok) {
           throw new Error('Error fetching post details');
         }
+        return response.json();
       })
-      .then(postData => {
+      .then(data => {
         setPost({
-          title: postData.title,
-          body: postData.body,
+          title: data.title,
+          body: data.body,
         });
       })
       .catch(error => {
@@ -42,18 +43,21 @@ const EditPost = () => {
   }, []);
 
   const submitEdit = () => {
-    const data = {
+    const postId = localStorage.getItem('editPostId');
+    const token = localStorage.getItem('jwtToken');
+
+    const updatedData = {
       title: post.title,
       body: post.body,
     };
 
-    fetch(`https://blogwebsite-backend-yg9k.onrender.com/posts/${localStorage.getItem('editPostId')}`, {
+    fetch(`http://localhost:5000/posts/${postId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(updatedData),
     })
       .then(response => {
         if (response.ok) {

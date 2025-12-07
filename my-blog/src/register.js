@@ -1,41 +1,60 @@
-import { useHistory } from "react-router-dom";
-import React from 'react';
-import './register.css';
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
-
-function registerUser(history) {
-    var data = {
-        username: document.getElementById('register-username').value,
-        password: document.getElementById('register-password').value
-    };
-
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'https://blogwebsite-backend-yg9k.onrender.com/register', true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.onreadystatechange = function(){
-        if (xhr.readyState === 4 && xhr.status === 201) {
-            history.push('/login');
-        }
-    };
-    xhr.send(JSON.stringify(data));
-}
+import React, { useState } from "react";
+import { useHistory, Link } from "react-router-dom";
+import "./register.css";
 
 const Register = () => {
-    const history = useHistory();
+  const history = useHistory();
 
-    return (
-        <>
-        <div className="register"> 
-            <h2>User Registration</h2>
-            <div class="row g-3">
-            <input type="text" id="register-username" className="form-control" placeholder="Username" />
-            <input type="password" id="register-password" className="form-control" placeholder="Password" />
-            <button className="btn btn-primary mt-3" onClick={() => registerUser(history)}>Register</button>
-            <h5>Already registered<Link to="/login">Login</Link></h5>
-            </div>
-        </div>
-        </>
-    );
-}
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const registerUser = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+      });
+
+      if (response.status === 201) {
+        history.push("/login");
+      } else {
+        alert("Registration failed");
+      }
+    } catch (err) {
+      console.error("Register error:", err);
+    }
+  };
+
+  return (
+    <div className="register">
+      <h2>User Registration</h2>
+
+      <input
+        type="text"
+        placeholder="Username"
+        className="form-control"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+
+      <input
+        type="password"
+        placeholder="Password"
+        className="form-control"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+
+      <button className="btn btn-primary mt-3" onClick={registerUser}>
+        Register
+      </button>
+
+      <h5>
+        Already registered? <Link to="/login">Login</Link>
+      </h5>
+    </div>
+  );
+};
 
 export default Register;

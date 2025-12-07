@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 const Home = () => {
-  const Blogs = Usefetch("https://blogwebsite-backend-yg9k.onrender.com/posts");
+  const Blogs = Usefetch("http://localhost:5000/posts");
 
   return (
     <div className="home">

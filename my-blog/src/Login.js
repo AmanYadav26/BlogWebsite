@@ -1,43 +1,58 @@
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import {Link} from 'react-router-dom';
-import './login.css'
-
-function loginUser(history) {
-    
-  var data = {
-    username: document.getElementById("login-username").value,
-    password: document.getElementById("login-password").value,
-  };
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "https://blogwebsite-backend-yg9k.onrender.com/login", true);
-  xhr.setRequestHeader("Content-Type", "application/json");
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      var response = JSON.parse(xhr.responseText);
-      console.log(response.token);
-      localStorage.setItem("jwtToken", response.token);
-      history.push('/Home');
-    }
-  };
-  xhr.send(JSON.stringify(data));
-}
+import { useState } from "react";
+import { useHistory, Link } from "react-router-dom";
+import "./login.css";
 
 const Login = () => {
   const history = useHistory();
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const loginUser = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+      });
+
+      if (response.status === 200) {
+        const data = await response.json();
+        localStorage.setItem("jwtToken", data.token);
+        history.push("/Home");
+      } else {
+        alert("Invalid username or password");
+      }
+    } catch (err) {
+      console.error("Login error:", err);
+      alert("Error logging in");
+    }
+  };
+
   return (
     <div className="login">
       <h2>User Login</h2>
-      <input type="text" id="login-username" placeholder="Username" />
-      <input type="password" id="login-password" placeholder="Password" />
-      <button onClick={() => loginUser(history)}>Login</button>
+      <input 
+        type="text" 
+        placeholder="Username" 
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+
+      <input 
+        type="password" 
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+
+      <button onClick={loginUser}>Login</button>
+
       <p>
         If not registered, <Link to="/register">create an account</Link>.
       </p>
     </div>
   );
 };
-
-
-
 
 export default Login;
