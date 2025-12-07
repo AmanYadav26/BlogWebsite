@@ -6,17 +6,17 @@ import "../node_modules/bootstrap/dist/js/bootstrap.min.js";
 const Blogdetails = () => {
   const history = useHistory();
   const { id } = useParams();
-  
+
   const token = localStorage.getItem("jwtToken");
   const userData = JSON.parse(atob(token.split(".")[1]));
   const userId = userData.userId;
 
   // Fetch post details
-  const Details = Usefetch("http://localhost:5000/posts/" + id);
+  const Details = Usefetch("https://blogwebsite-20f1.onrender.com/posts/" + id);
 
   // Fast DELETE using fetch()
   const handleDelete = () => {
-    fetch(`http://localhost:5000/posts/${id}`, {
+    fetch(`https://blogwebsite-20f1.onrender.com/posts/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,

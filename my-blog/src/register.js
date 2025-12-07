@@ -10,7 +10,7 @@ const Register = () => {
 
   const registerUser = async () => {
     try {
-      const response = await fetch("http://localhost:5000/register", {
+      const response = await fetch("https://blogwebsite-20f1.onrender.com/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password })

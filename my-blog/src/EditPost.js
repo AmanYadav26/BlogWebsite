@@ -18,7 +18,7 @@ const EditPost = () => {
       return;
     }
 
-    fetch(`http://localhost:5000/posts/${postId}`, {
+    fetch(`https://blogwebsite-20f1.onrender.com/posts/${postId}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -51,7 +51,7 @@ const EditPost = () => {
       body: post.body,
     };
 
-    fetch(`http://localhost:5000/posts/${postId}`, {
+    fetch(`https://blogwebsite-20f1.onrender.com/posts/${postId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
