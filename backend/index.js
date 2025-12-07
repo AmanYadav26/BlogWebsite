@@ -55,6 +55,11 @@ function verifyToken(req, res, next) {
     return res.status(401).json({ message: "Invalid or expired token" });
   }
 }
+app.get("/ping", (req, res) => {
+  console.log("Ping received at:", new Date().toISOString());
+  res.status(200).send("Server is awake");
+});
+
 
 
 // Register Route
