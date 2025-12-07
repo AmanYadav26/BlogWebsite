@@ -20,77 +20,67 @@ const EditPost = () => {
 
     fetch(`https://blogwebsite-20f1.onrender.com/posts/${postId}`, {
       method: 'GET',
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+      headers: { Authorization: `Bearer ${token}` },
     })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Error fetching post details');
-        }
-        return response.json();
+      .then(res => {
+        if (!res.ok) throw new Error("Failed to fetch post");
+        return res.json();
       })
-      .then(data => {
-        setPost({
-          title: data.title,
-          body: data.body,
-        });
-      })
-      .catch(error => {
-        console.error(error);
-        alert('Error fetching post details');
-      });
+      .then(data => setPost({ title: data.title, body: data.body }))
+      .catch(err => alert("Error fetching post"));
   }, []);
 
   const submitEdit = () => {
     const postId = localStorage.getItem('editPostId');
     const token = localStorage.getItem('jwtToken');
 
-    const updatedData = {
-      title: post.title,
-      body: post.body,
-    };
-
     fetch(`https://blogwebsite-20f1.onrender.com/posts/${postId}`, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(updatedData),
+      body: JSON.stringify(post),
     })
-      .then(response => {
-        if (response.ok) {
-          alert('Post updated successfully!');
-          history.push('/Home');
-        } else {
-          throw new Error('Error updating post');
-        }
+      .then(res => {
+        if (!res.ok) throw new Error("Update Failed");
+        alert("Post updated successfully!");
+        history.push("/Home");
       })
-      .catch(error => {
-        console.error(error);
-        alert('Error updating post');
-      });
+      .catch(() => alert("Error updating post"));
   };
 
   return (
-    <div>
-      <label>Title:</label>
-      <input
-        type="text"
-        id="edit-post-title"
-        value={post.title}
-        onChange={e => setPost({ ...post, title: e.target.value })}
-      />
-      <br />
-      <label>Body:</label>
-      <textarea
-        id="edit-post-content"
-        value={post.body}
-        onChange={e => setPost({ ...post, body: e.target.value })}
-      />
-      <br />
-      <button onClick={submitEdit}>Submit Edit</button>
+    <div className="edit-container">
+      <div className="edit-card shadow-lg">
+
+        <div className="edit-header">
+          <h3>Edit Blog Post</h3>
+        </div>
+
+        <div className="edit-body">
+
+          <label>Title</label>
+          <input
+            type="text"
+            className="form-control mb-3"
+            value={post.title}
+            onChange={e => setPost({ ...post, title: e.target.value })}
+          />
+
+          <label>Body</label>
+          <textarea
+            className="form-control mb-3"
+            value={post.body}
+            onChange={e => setPost({ ...post, body: e.target.value })}
+          ></textarea>
+
+          <button className="btn Submitedit-btn w-100" onClick={submitEdit}>
+            Submit Edit
+          </button>
+
+        </div>
+      </div>
     </div>
   );
 };

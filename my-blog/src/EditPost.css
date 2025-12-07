@@ -1,34 +1,75 @@
+/* Container (centers the card) */
+.edit-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  background: #f7f7f7;
+  padding: 20px;
+}
+
+/* Card styling */
+.edit-card {
+  width: 50%;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  animation: fadeIn 0.4s ease;
+}
+
+/* Gradient Header */
+.edit-header {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.edit-header h3 {
+  margin: 0;
+  font-weight: 700;
+}
+
+/* Body styling */
+.edit-body {
+  padding: 20px 30px;
+}
+
 label {
-    display: block;
-    margin-top: 10px;
-    font-weight: bold;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+textarea {
+  height: 18rem !important;
+}
+
+/* Modern button */
+.Submitedit-btn {
+  background: linear-gradient(135deg, #fc5c7d, #6a82fb);
+  border: none;
+  font-weight: bold;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 10px;
+  transition: 0.3s ease;
+}
+
+.Submitedit-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .edit-card {
+    width: 90%;
   }
-  
-  input, textarea {
-    width: 40%;
-    padding: 5px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-  }
-  
-  textarea {
-    height: 20rem;
-  }
-  
-  button {
-    display: block;
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 0 auto;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
+}

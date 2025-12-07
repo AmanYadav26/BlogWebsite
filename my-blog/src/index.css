@@ -1,183 +1,241 @@
-*{
-
+* {
   margin: 0;
   font-family: "Quicksand";
   color: #333;
 }
-.nav{
+
+/* NAVBAR */
+.nav {
   background-color: rgb(47, 48, 50);
 }
 
-
-
-
-
-
-.navbar-nav li a:hover{
+.navbar-nav li a:hover {
   color: rgb(201, 90, 90);
   background-color: rgb(72, 68, 68);
 }
 
+/* -------------------------------------------------- */
+/* HOME PAGE HEADER - Modern Colorful UI              */
+/* -------------------------------------------------- */
 
+.home-header {
+  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 50%, #fcb69f 100%);
+  height: 3.4rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 2px solid #ffe3e3;
+}
 
-/* Blogs preview */
+.home-link {
+  color: #5a4fcf !important;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-decoration: none !important;
+  letter-spacing: 1px;
+  transition: 0.3s ease;
+}
 
+.home-link:hover {
+  color: #3b2fcf !important;
+  transform: translateY(-2px);
+}
+
+/* -------------------------------------------------- */
+/* BLOGS PREVIEW                                      */
+/* -------------------------------------------------- */
 
 .blog-preview {
-  
   border-bottom: 1px solid #fafafa;
-  box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  padding: 1rem;
+  background: #ffffff;
+  transition: 0.3s ease;
 }
+
 .blog-preview:hover {
-  
-  box-shadow: 1px 3px 5px rgba(81, 80, 80, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 1px 3px 12px rgba(81, 80, 80, 0.25);
 }
+
 .blog-preview h5 {
   display: inline;
+  color: #5a4fcf;
 }
 
-.blog-preview small{
-  color: black;
-}
-.center{
-  text-align: center;
-}
- .blogs{
- 
-  width: 15rem;
-  
+.blog-preview small {
+  color: #777;
 }
 
-.blog-preview p{
- 
-
+.blog-preview p {
   color: #6b4f58;
 }
 
-
-.img{
-  width: 14rem;
-}
-.blog-preview img{
-  width: 45%;
-  float: left;
-}
-
-
-
-
-
-
-
-
-.blog-list{
-  
- 
-  
+.blog-list {
   display: flex;
   margin-top: 21px;
   justify-content: center;
 }
 
-
-.home{
-  width: 100%;
+.img {
+  width: 14rem;
 }
-.currentday{
+
+.blog-preview img {
+  width: 45%;
+  float: left;
+  border-radius: 10px;
+}
+
+/* -------------------------------------------------- */
+/* HOME PAGE BANNER                                   */
+/* -------------------------------------------------- */
+
+.currentday {
   opacity: 0.89;
- 
-  background: url('./assests/photo-1562813733-b31f71025d54.avif') no-repeat center center/cover ;
+  background: url("./assests/photo-1562813733-b31f71025d54.avif") no-repeat center center/cover;
   width: 95vw;
   height: 44vh;
-  
-
-
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
-.blog{
+
+.blog {
   color: white;
 }
-@media screen and (max-width:331px) {
-  .currentblog{
-    width: 60vw;
-  }
-}
-@media screen and (min-width:331px) {
-  .currentblog{
-    width: 43vw;
-  }
-}
-.currentblog{
+
+.currentblog {
   margin-left: 4vw;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   margin-top: 4rem;
 }
-@media screen and (max-width:457px) {
-  .currentblog h2{
-    font-size: 1.2rem;
+
+.currentblog h2 {
+  text-shadow: 0px 2px 6px rgba(0,0,0,0.4);
+}
+
+/* -------------------------------------------------- */
+/* BLOGDETAILS PAGE                                   */
+/* -------------------------------------------------- */
+
+.blog-details {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background: #f7f7f7;
+}
+
+/* Banner */
+.background {
+  width: 90%;
+  max-width: 1000px;
+  height: 35vh;
+  margin: auto;
+  opacity: 0.9;
+  border-radius: 14px;
+  overflow: hidden;
+  background: url("./assests/learning_react.png") no-repeat center center/cover;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.background h2 {
+  padding-top: 12vh;
+  margin-left: 2rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Content Card */
+.blog-content-card {
+  width: 90%;
+  max-width: 1000px;
+  margin: 2rem auto;
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.blog-content-card h5 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #5a4fcf;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 8px;
+}
+
+.blog-content-card p {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #444;
+  white-space: pre-wrap;
+}
+
+/* -------------------------------------------------- */
+/* Buttons                                             */
+/* -------------------------------------------------- */
+
+.blog-buttons {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.delete-btn {
+  width: 100px !important;
+  height: 36px;
+  border-radius: 8px;
+  font-weight: 600;
+  margin: 0px;
+  margin-right: auto !important;
+}
+
+.edit-btn {
+  width: 100px !important;
+  height: 36px;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-left: auto !important;
+}
+
+/* -------------------------------------------------- */
+/* RESPONSIVE FIXES – FINAL MOBILE SOLUTION           */
+/* -------------------------------------------------- */
+
+@media (max-width: 600px) {
+
+  .home-header {
+    height: auto !important;
+    padding: 0.8rem 0;
+    flex-direction: column !important;
+    gap: 8px !important;
   }
-  .currentblog h5{
+
+  .home-link {
+    font-size: 0.9rem;
+  }
+
+  .background h2 {
+    font-size: 1.3rem;
+    margin-left: 1rem;
+  }
+
+  .blog-content-card h5 {
+    font-size: 1.3rem;
+  }
+
+  .blog-content-card p {
     font-size: 1rem;
   }
-  
 }
-.currentblog h2,a{
-  width: fit-content; 
-  margin-left: 1.2rem;
-}
-.currentblog h5{
-  margin-left: 1.2rem;
-}
-
-.currentblog a{
-  
-  margin-top: 2rem;
-  text-decoration: none;
-  color: white;
- }
-.reading:hover{
-  cursor: pointer;
-  text-decoration:underline;
-}
-
-.blog-details{
-  display: flex;
-  width: 100vw;
-  height: 82vh;
-  justify-content: center;
-  margin-top: 4vh;
-}
-
-.background{
-  margin: auto;
-  opacity: 0.89;
-  background-position: center center;
-  background: url('./assests/learning_react.png') no-repeat center center/cover;
-  width: 90vw;
-  height: 35vh;
-  background-size: cover;
-}
-
-
-.background h2{
- 
-  padding-top: 14vh;
-  
-}
-/* .aboutme{
-  width: 56vw;
-}
-.image img{
-  width: 34vw;
-} */
-
-
-
-
-
-
-
-
-
-

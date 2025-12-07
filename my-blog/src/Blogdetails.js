@@ -1,7 +1,5 @@
 import { useParams, useHistory, Link } from "react-router-dom";
 import Usefetch from "./fetch";
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "../node_modules/bootstrap/dist/js/bootstrap.min.js";
 
 const Blogdetails = () => {
   const history = useHistory();
@@ -11,10 +9,8 @@ const Blogdetails = () => {
   const userData = JSON.parse(atob(token.split(".")[1]));
   const userId = userData.userId;
 
-  // Fetch post details
   const Details = Usefetch("https://blogwebsite-20f1.onrender.com/posts/" + id);
 
-  // Fast DELETE using fetch()
   const handleDelete = () => {
     fetch(`https://blogwebsite-20f1.onrender.com/posts/${id}`, {
       method: "DELETE",
@@ -43,40 +39,41 @@ const Blogdetails = () => {
   return (
     <div className="blog-details">
       {Details && (
-        <div className="Details">
+        <div style={{ width: "100%" }}>
+          
+          {/* Banner */}
           <div className="background">
-            <h2 className="text-white ml-5">{Details.title}</h2>
+            <h2>{Details.title}</h2>
           </div>
 
-          <div className="container mt-5">
-            <div className="border-bottom border-2">
-              <h5 className="text-start fw-bold">{Details.title}</h5>
-            </div>
-
-            <p className="text-start mt-4">{Details.body}</p>
+          {/* Content Card */}
+          <div className="blog-content-card">
+            <h5>{Details.title}</h5>
+            <p>{Details.body}</p>
 
             {Details.userId === userId && (
-              <div className="text-start">
+              <div className="blog-buttons">
+
                 <button
-                  className="btn btn-secondary"
-                  style={{ width: "fit-content", marginRight: "10px" }}
+                  className="btn btn-danger delete-btn"
                   onClick={handleDelete}
                 >
                   Delete
                 </button>
 
-                <Link to="/editpost">
+                <Link to="/editpost" className="edit-link">
                   <button
-                    className="btn btn-secondary"
-                    style={{ width: "fit-content" }}
+                    className="btn btn-primary edit-btn"
                     onClick={edit}
                   >
                     Edit
                   </button>
                 </Link>
+
               </div>
             )}
           </div>
+
         </div>
       )}
     </div>
